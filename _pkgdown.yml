@@ -2,9 +2,11 @@ url: https://shalenik.github.io/BFACT/
 template:
   bootstrap: 5
 articles:
-  - title: Articles
-    contents:
-      - 01-fit-real-data
-      - 02-posterior-simulation
-      - 03-multiple-replicates
+- title: Examples
+  navbar: ~
+  contents:
+  - 01-fit-real-data
+  - 02-posterior-simulation
+  - 03-multiple-replicates
+
 
