@@ -1,0 +1,32 @@
+Package: BFACT
+Type: Package
+Title: Bayesian Factor Analysis for Climate Trajectories
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Shaleni", "Kovach",
+      email = "shaleni@live.unc.edu",
+      role = c("aut", "cre")
+    )
+  )
+Description: Fits Bayesian latent factor models to climate trajectory data,
+  with tools for model fitting, posterior simulation, model comparison,
+  and visualization of observed and inferred temperature anomaly curves.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+URL: https://shalenik.github.io/BFACT/
+BugReports: https://github.com/shalenik/BFACT/issues
+Suggests: 
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    ggplot2,
+    ncdf4
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports: 
+    splines,
+    stats
+VignetteBuilder: knitr

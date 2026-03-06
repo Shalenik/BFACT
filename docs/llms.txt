@@ -1,0 +1,134 @@
+# BFACT
+
+Bayesian Factor Analysis for Climate Trajectories (BFACT) is an R
+package for modeling climate data using a Bayesian implementation of a
+latent factor model.
+
+## Installation
+
+You can install the development version of BFACT from GitHub:
+
+``` r
+
+# install.packages("devtools")
+devtools::install_github("Shalenik/BFACT")
+```
+
+## Features
+
+- **Bayesian Factor Analysis**: Fit BFACT models to climate data with
+  customizable latent factors
+
+- **Model Selection**: Tools for selecting optimal hyperparameters
+
+- **Posterior Simulation**: Generate and analyze posterior samples
+
+## Getting Started
+
+See the vignettes for detailed examples:
+
+- [Fitting BFACT to Real Climate
+  Data](https://shalenik.github.io/BFACT/articles/01-fit-real-data.md) -
+  Learn how to fit the BFACT model to real temperature anomaly data
+- [Generate Posterior
+  Simulations](https://shalenik.github.io/BFACT/articles/02-posterior-simulation.md) -
+  Work with posterior samples and synthetic data generation
+- [Model Selection Across Multiple
+  Replications](https://shalenik.github.io/BFACT/articles/03-multiple-replicates.md) -
+  Evaluate model selection consistency across replications
+
+## Quick Example
+
+``` r
+
+library(BFACT)
+
+# Simulate data with H_true = 2 latent factors and 20 climate models
+sim <- simulate_data(H_true = 2, K = 20, T_obs = 50)
+
+# Fit BFACT model with H = 2 fitted latent factors
+fit <- fit_bfact_model(sim, H = 2, nsim = 5000)
+
+# Extract posterior mean curve
+post_mean <- posterior_mean_curve(fit)
+
+# Plot results
+plot_data_with_posterior(sim$Y, sim$z, 
+                        posterior_samples = sample_posterior(fit, ncurves = 50),
+                        title = "BFACT Fit")
+```
+
+## Main Functions
+
+- [`BFACT()`](https://shalenik.github.io/BFACT/reference/BFACT.md) - Core
+  Bayesian factor analysis function
+- [`fit_bfact_model()`](https://shalenik.github.io/BFACT/reference/fit_bfact_model.md) -
+  Convenient wrapper for model fitting
+- [`consolidate_results()`](https://shalenik.github.io/BFACT/reference/consolidate_results.md) -
+  Aggregate results across multiple H values
+- [`find_elbow()`](https://shalenik.github.io/BFACT/reference/find_elbow.md) -
+  Identify optimal model complexity
+- [`detect_outliers()`](https://shalenik.github.io/BFACT/reference/detect_outliers.md) -
+  Remove outlier climate models
+- [`simulate_data()`](https://shalenik.github.io/BFACT/reference/simulate_data.md) -
+  Generate synthetic data for testing
+
+## Citation
+
+If you use BFACT in your research, please cite:
+
+    [Citation information to be added]
+
+## License
+
+This package is licensed under the MIT License. See the LICENSE file for details.
+
+# Package index
+
+## All functions
+
+- [`BFACT()`](https://shalenik.github.io/BFACT/reference/BFACT.md) :
+  Bayesian Latent Factor Model for Climate Projections (BFACT)
+- [`consolidate_results()`](https://shalenik.github.io/BFACT/reference/consolidate_results.md)
+  : Consolidate Fitting Results
+- [`detect_outliers()`](https://shalenik.github.io/BFACT/reference/detect_outliers.md)
+  : Detect Outlier Climate Models Using RMSE Thresholding
+- [`find_elbow()`](https://shalenik.github.io/BFACT/reference/find_elbow.md)
+  : Find Elbow Point in a Curve (Perpendicular Distance Method)
+- [`fit_bfact_model()`](https://shalenik.github.io/BFACT/reference/fit_bfact_model.md)
+  : Fit BFACT Model for a Single H Value
+- [`mean_sd_threshold()`](https://shalenik.github.io/BFACT/reference/mean_sd_threshold.md)
+  : RMSE Threshold Function (Mean + k SD)
+- [`plot_comparison()`](https://shalenik.github.io/BFACT/reference/plot_comparison.md)
+  : Plot Model Comparison
+- [`plot_data_with_posterior()`](https://shalenik.github.io/BFACT/reference/plot_data_with_posterior.md)
+  : Plot Data with Posterior Samples or True Trend
+- [`plot_normalized_metrics()`](https://shalenik.github.io/BFACT/reference/plot_normalized_metrics.md)
+  : Plot Normalized Metrics with Elbow Detection
+- [`plot_posterior()`](https://shalenik.github.io/BFACT/reference/plot_posterior.md)
+  : Plot Posterior Distribution
+- [`plot_posterior_variance()`](https://shalenik.github.io/BFACT/reference/plot_posterior_variance.md)
+  : Plot Variance of Posterior Means Across Replicates
+- [`plot_replicate_averages()`](https://shalenik.github.io/BFACT/reference/plot_replicate_averages.md)
+  : Plot Average Posterior Means Across Replicates with True Trend
+- [`plot_timewise()`](https://shalenik.github.io/BFACT/reference/plot_timewise.md)
+  : Plot Timewise Posterior with Observations
+- [`posterior_mean_curve()`](https://shalenik.github.io/BFACT/reference/posterior_mean_curve.md)
+  : Compute Posterior Mean Curve
+- [`sample_posterior()`](https://shalenik.github.io/BFACT/reference/sample_posterior.md)
+  : Sampled Posterior Curves
+- [`simulate_data()`](https://shalenik.github.io/BFACT/reference/simulate_data.md)
+  : Simulate Climate Data
+- [`simulate_from_posterior()`](https://shalenik.github.io/BFACT/reference/simulate_from_posterior.md)
+  : Simulate Data from a Posterior Draw of a Fitted BFACT Object
+
+# Articles
+
+### All vignettes
+
+- [Fitting BFACT to Real Climate
+  Data](https://shalenik.github.io/BFACT/articles/01-fit-real-data.md):
+- [Generate Posterior
+  Simulations](https://shalenik.github.io/BFACT/articles/02-posterior-simulation.md):
+- [Model Selection Across Multiple
+  Replications](https://shalenik.github.io/BFACT/articles/03-multiple-replicates.md):
